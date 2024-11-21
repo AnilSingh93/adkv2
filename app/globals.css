@@ -221,9 +221,6 @@ ul.prod_cust_list li img {
   .manufac_logo:hover .manufac_logo_inner {
     animation-play-state: paused;
   }
-  
-
-
 @keyframes animate{
   0%{opacity: 0.2;}
   25%{opacity: .4;}
@@ -231,7 +228,44 @@ ul.prod_cust_list li img {
   75%{opacity: .8;}
   50%{opacity: 1;}
 }
-  @media (max-width: 767px){
+.cust_pulse {
+  padding-left: 30px;
+  font-style: normal;
+}
+.cust_pulse:after, .cust_pulse:before {
+  width: 9px;
+  height: 9px;
+  background: #248130;
+  border-radius: 9px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  content: "";
+  margin: 8px;
+}
+.cust_pulse:before {
+  animation: inventory-pulse 2s linear infinite;
+}
+@keyframes inventory-pulse {
+0% {
+  opacity: .5;
+}
+
+100% {
+  transform: scale(2.5);
+  opacity: 0;
+}
+}
+.prod_destails table tr {
+  border: 1px solid #e2e2e2;
+}
+
+.prod_destails table tr td {
+  padding: 8px 10px !important;
+  border: 1px solid #e2e2e2;
+}
+
+@media (max-width: 767px){
   .container{
     padding: 0 20px;
   }
