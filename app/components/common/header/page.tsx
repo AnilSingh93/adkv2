@@ -4,10 +4,11 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import Search from "@/app/search/page";
 import { usePathname } from "next/navigation";
+import { useRouter } from 'next/navigation'
 
 
-
-const Header = () => {
+const Header = () => { 
+    const router = useRouter();
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [open, setOpen] = useState(false);
@@ -108,9 +109,9 @@ const Header = () => {
                         <div className="main_menu hidden md:block">
                             <nav className="Header__MainNav hidden-pocket hidden-lap" aria-label="Main navigation">
                                 <ul className="flex items-center">
-                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/" className={pathname.startsWith('/')&&'active'}>Home</Link></li>
-                                    <li className="group mx-4 HorizontalList__Item w-auto uppercase"><Link href="/categories" className={pathname.startsWith('/categories')&&'active'}>Categories</Link>
-
+                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/" className={pathname === "/" &&'bg-secondary text-white px-4 py-2 rounded-full'}>Home</Link></li>
+                                    <li className="group mx-4 HorizontalList__Item w-auto uppercase"><Link href="/categories" className={pathname.startsWith('/categories')&&'bg-secondary text-white px-4 py-2 rounded-full'}>Categories</Link>
+{/* 
                                         <div className="group-hover:opacity:100 group-hover:visible w-full bg-white absolute top-[100%] left-0 z-10 transition-all ease-in-out duration-300 hidden opacity-0">
                                             <div className="flex w-[1200px] p-8 mx-auto ">
                                                 <ul className="products columns-6 gap-8">
@@ -126,12 +127,12 @@ const Header = () => {
 
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div> */}
 
                                     </li>
-                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/about" className={pathname.startsWith('/about')&&'active'}>About us</Link></li>
-                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/contact-us" className={pathname.startsWith('/contact-us')&&'active'}>Contact us</Link></li>
-                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/opportunities" className={pathname.startsWith('/opportunities')&&'active'}>Opportunities</Link></li>
+                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/about" className={pathname.startsWith('/about')&&'bg-secondary text-white px-4 py-2 rounded-full'}>About us</Link></li>
+                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/contact-us" className={pathname.startsWith('/contact-us')&&'bg-secondary text-white px-4 py-2 rounded-full'}>Contact us</Link></li>
+                                    <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="/opportunities" className={pathname.startsWith('/opportunities')&&'bg-secondary text-white px-4 py-2 rounded-full'}>Opportunities</Link></li>
                                     <li className="relative mx-4 HorizontalList__Item w-auto uppercase"><Link href="https://shop.adkinstruments.in/" className="sho_now">Shop Now</Link></li>
                                 </ul>
                             </nav>

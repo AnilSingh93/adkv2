@@ -44,9 +44,9 @@ const opportunities = () => {
 
             <div className="container md:mt-5 mt-3 md: pt-5 ">
                 <div className="tab_btn text-center">
-                    <button data-attr="1" onClick={() => clickTab(1)} className={activetab == 1 ? 'text-[20px] font-bold border-b-2 border-solid border-primary text-black' : 'text-[20px] text-black'}>
+                    <button data-attr="1" onClick={() => clickTab(1)} className={activetab == 1 ? 'text-[16px] border-b-2 bg-secondary text-white px-4 py-2 rounded-full' : 'text-[16px] text-secondary'}>
                         Become An Employee</button>
-                    <button data-attr="2" onClick={() => clickTab(2)} className={activetab == 2 ? 'text-[20px] font-bold border-b-2 border-solid border-primary text-black ml-[20px]' : 'text-[20px] ml-[20px] text-black'}>
+                    <button data-attr="2" onClick={() => clickTab(2)} className={activetab == 2 ? 'text-[16px] border-b-2 bg-secondary text-white px-4 py-2 rounded-full ml-[20px]' : 'text-[16px] ml-[20px] text-secondary'}>
                         Become a Distributor</button>
                 </div>
                 <div className={activetab == 1 ? 'block' : 'hidden'} data-attr="1">
@@ -88,15 +88,40 @@ const opportunities = () => {
 
                 <div className={activetab == 2 ? 'block' : 'hidden'} data-attr="2">
                     <div className="prod-with-detail prod-detila ">
-                        <h1 className="font-bold text-xl text-center mt-5 text-primary">Available Categories</h1>
-                        <ul className="flex flex-wrap justify-center mt-5">
-                            <li className="mx-2 font-semibold text-[14px]"><Link href="">AIR QUALITY</Link></li>
-                            <li className="mx-2 font-semibold text-[14px]"><Link href="">CONSTRUCTIONAL TOOLS</Link></li>
-                            <li className="mx-2 font-semibold text-[14px]"><Link href="">MEASURING DEVICES</Link></li>
-                            <li className="mx-2 font-semibold text-[14px]"><Link href="">MODEMS/ROUTERS</Link></li>
-                            <li className="mx-2 font-semibold text-[14px]"><Link href="">OCEANOGRAPHY</Link></li>
-                            <li className="mx-2 font-semibold text-[14px]"><Link href="">WASTE WATER</Link></li>
+                    <div className="relative overflow-x-auto shadow-md sm:rounded-lg mt-5">
+                    <table className="w-full text-sm text-left rtl:text-right text-white-100 dark:text-white">
+                                <thead className="text-xs uppercase bg-primary dark:text-white text-white">
+                                    <tr>
+                                        <th scope="col" className="px-6 py-3 text-center">Available Categories</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+
+                                                    <td className="px-6 py-4 border-b dark:bg-gray-800 dark:border-gray-700">
+                                                    <ul className="flex flex-wrap justify-center mt-5">
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="/categories/air-quality">AIR QUALITY</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/constructional-tools">CONSTRUCTIONAL TOOLS</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/measuring-devices">MEASURING DEVICES</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/modemsrouters">MODEMS/ROUTERS</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/oceanography">OCEANOGRAPHY</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/waste-water">WASTE WATER</Link></li>
                         </ul>
+                                                    </td>
+                                                    
+                                    </tr>
+                                </tbody>
+                            </table>
+                            </div>
+                        {/* <h1 className="font-bold text-xl text-center mt-5 text-primary">Available Categories</h1>
+                        <ul className="flex flex-wrap justify-center mt-5">
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="/category/air-quality">AIR QUALITY</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/constructional-tools">CONSTRUCTIONAL TOOLS</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="category/measuring-devices">MEASURING DEVICES</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/modemsrouters">MODEMS/ROUTERS</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="categories/oceanography">OCEANOGRAPHY</Link></li>
+                            <li className="mx-2 font-semibold text-[14px]"><Link href="category/waste-water">WASTE WATER</Link></li>
+                        </ul> */}
 
                         
 <ul className="grid w-full gap-6 md:grid-cols-2 mt-10">
@@ -106,7 +131,7 @@ const opportunities = () => {
             <div className="block">
                 <div className="w-full text-lg font-semibold">Single Category</div>
             </div>
-            <svg className="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <svg className="rotate-90 w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>
         </label>
@@ -117,7 +142,7 @@ const opportunities = () => {
             <div className="block">
                 <div className="w-full text-lg font-semibold">Multiple category</div>
             </div>
-            <svg className="w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+            <svg className="rotate-90 w-5 h-5 ms-3 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
             </svg>
         </label>

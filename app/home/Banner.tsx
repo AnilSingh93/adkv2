@@ -93,7 +93,7 @@ const Banner = (props:any) => {
                         gallery?.map((data: any, index: any) => {
                             return (
                                 <div className="max-h-[1080px] overflow-hidden md:min-h-full">
-                                <Image src={data.link} key={`banner--${index}`}  alt="banner" width="1920" height="1080" className="object-contain" />
+                                <Image src={data.link} key={`banner--${index}`}  alt="banner" width="1920" height="1080" className="object-cover" />
                                 </div>
                                 // <img src={data.link} className='w-full' key={`banner--${index}`} />
                             )

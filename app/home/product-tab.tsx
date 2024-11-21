@@ -111,17 +111,19 @@ export default function ProductTab() {
                                     featured.slice(0,4).map((data: any) => {
                                         return (
                                             <>
-                                                <div className="text-center product-main w-full md:max-w-[300px]  w-full w-72 bg-white shadow-md rounded-xl duration-500 border border-[#0005] overflow-hidden" key={data.id+1}>
-                                                    <Link href={`/products/${data.slug}`} className="inline-block w-full">                
-                                                    <div className="prod-image relative md:w-[auto] w-[250px] md:h-[100%] h-[250px] mx-auto md:pt-[105%] pt-0 bg-[#d1caca1a] border-1-[#25104830]">
-                                                        <Image src={data.media.original_url} alt="Featured products" fill className="object-contain mix-blend-multiply"/>
+                                                <div className="text-center product-main w-full md:max-w-[300px]  w-full w-72 rounded-xl duration-500 border border-[#0005] overflow-hidden bg-primary p-[15px]" key={data.id+1}>
+                                                    <Link href={`/products/${data.slug}`} className="inline-block w-full">
+                                                    <div className="prod-image relative md:w-[auto] w-[250px] md:h-[100%] h-[250px] mx-auto md:pt-[105%] pt-0 bg-white border-1-[#25104830] rounded-[15px] overflow-hidden mb-[15px]">
+                                                        <Image src={data.media.original_url} alt="Featured products" fill className="object-cover"/>
                                                             
                                                         </div>
-                                                        <div className="prod-detila px-2  border-t border-[#25104847]">
-                                                        <h2 className="mb-4 font-bold text-sm mt-4 text-[13px] line-clamp-[1.5]">{data.name}</h2>
+                                                        <div className="prod-detila px-2">
+                                                        <h2 className="mb-2 font-bold text-sm mt-2 text-[12px] line-clamp-[1.5] text-white">{data.name}</h2>
                                                         </div>
                                                     </Link>                                                    
                                                 </div>
+
+                                                
                                             </>
                                         )
                                     })

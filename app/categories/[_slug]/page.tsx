@@ -5,9 +5,7 @@ import { useEffect, useState } from "react";
 
 
 const CollectionChildren = ({params}:any ) => {    
-    const {_slug} = params;
-    
-    
+    const {_slug} = params;    
 const [collections, setCollections] = useState([]);
 const [loading, setLoading] = useState(true);
 console.log(collections);
@@ -46,9 +44,9 @@ const categoryData = async () => {
                                 <div className="info absolute bottom-[30px] px-12 w-full text-center">   
                                 {/* <p className="text-white py-3 px-4 text-[16px] font-bold rounded-md mx-auto inline-block md:mb-4 mb-2">{data.name}</p>                        */}
                              
-                                     <Link href={data.children && data.children.length > 0 ? `/categories/${data.slug_url}`: `/categories/${data.slug_url}`} className="bg-white py-3 px-4 text-[16px] font-bold  rounded-md mx-auto inline-block">{data.name}</Link>
+                                     <Link href={data.children && data.children.length > 0 ? `/categories/${data.slug_url}`: `/categories/${data.slug_url}`} className="bg-white py-3 px-4 text-[16px] font-bold  rounded-md mx-auto inline-block border-2 border-[#251048]">{data.name}</Link>
                                     
-                                  
+                               <span className="none" slugtransfer={data.name}></span>   
                                 </div>
                             </div>
                             )

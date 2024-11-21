@@ -18,14 +18,14 @@ const Products = ({ params }: any) => {
     const [isShowing, setIsShowing] = useState(false);
     const [related, setRelated] = useState([]);
 
-console.log("allData", allData);
+    console.log("allData", allData);
 
-   const [activetab, setActiovetab] = useState(1);
+    const [activetab, setActiovetab] = useState(1);
     const clickTab = (number: any) => {
         setActiovetab(number)
     }
 
-   useEffect(() => {
+    useEffect(() => {
         const allProducts = async () => {
             try {
                 const res = await fetch(`https://adkinstruments.in/api/v1/product/${slug}`);
@@ -45,47 +45,72 @@ console.log("allData", allData);
 
             <div className="flex flex-wrap md:flex-nowrap justify-between md:pt-8 pt-5">
                 <div className="md:w-1/2 w-full flex justify-between relative">
-<div className="left max-w-20 w-full mr-3 absolute left-0 top-0 h-full overflow-y-auto prod_scroll">
-{
-                                    allData.media?.map((images, id) => <div                                       
-                                    className=                                    
-                                    {promedia == id?'bg-[#d1caca1a] relative thumbnail prod_slider w-full h-[80px] mb-3 border-2 border-black':'bg-[#d1caca1a] relative thumbnail prod_slider w-full h-[80px] mb-3 '}
-                                    ><Image fill loading='lazy' src={images} alt="product image" style={{ objectFit: "contain"}} className="mix-blend-multiply cursor-pointer border border-gray-50" key={id + 5} onClick={()=>setPromedia(id)} /></div>)
-                                }
-                                
-</div>
+                    <div className="left max-w-20 w-full mr-4 absolute left-0 top-0 h-full overflow-y-auto prod_scroll">
+                        {
+                            allData.media?.map((images, id) => <div
+                                className=
+                                {promedia == id ? 'bg-[#d1caca1a] relative thumbnail prod_slider w-full h-[80px] mb-3 border-2 border-black' : 'bg-[#d1caca1a] relative thumbnail prod_slider w-full h-[80px] mb-3 '}
+                            ><Image fill loading='lazy' src={images} alt="product image" style={{ objectFit: "contain" }} className="mix-blend-multiply cursor-pointer border border-gray-50" key={id + 5} onClick={() => setPromedia(id)} /></div>)
+                        }
 
-<div className="max-w-[calc(100%-90px)] w-full ml-auto lg-max-w">
-<div className="relative thumbnail prod_slider w-full h-[550px]"><Image fill
-sizes='50vw'
-loading='lazy' src={allData.media&&allData.media[promedia]} alt="product image" style={{ objectFit: "contain"}} className="mix-blend-multiply" /></div>
+                    </div>
 
-    
-</div>
+                    <div className="max-w-[calc(100%-90px)] w-full ml-auto lg-max-w">
+                        <div className="relative thumbnail prod_slider w-full h-[550px] border border-secondary rounded-sm">
+                            {/* <Image fill
+                            sizes='50vw'
+                            loading='lazy' src={allData.media && allData.media[promedia]} alt="product image" style={{ objectFit: "contain" }} className="mix-blend-multiply" /> */}
+                            <Image fill
+                            sizes='50vw'
+                            loading='lazy' src={allData.media && allData.media[promedia]} alt="product image" style={{ objectFit: "contain" }} className="mix-blend-multiply" />
+                            </div>
+
+
+                    </div>
 
                 </div>
 
                 <div className="md:w-1/2 w-full md:pl-5">
 
-                    <h1 className='mt-8 md:mt-0 mb-2 font-bold text-[22px] leading-7 uppercase'>{allData.name}</h1>
+                    <h1 className='text-secondary mt-8 md:mt-0 mb-2 font-bold text-[22px] leading-7 uppercase'>{allData.name}</h1>
+                    {
+                        allData.show_price == 1 &&
+                        <div className="price flex items-center gap-3 mb-5">
+                            <div className="relgular text-[18px] line-through">₹{allData.regular_amount}</div>
+                            <div className="discounted text-[20px] font-bold">₹{allData.total_amount}</div>
+                            <span className='text-[12px] bg-secondary text-white py-1 px-2 rounded-md'>Save ₹{allData.discount_amount}</span>
+                        </div>
+                    }
                     <div className="prod_sort_title md:mt-4 ">
                         <p>
-                    {
-                        allData?.content && allData.content.short_description
-                    }
-                    </p>
+                            {
+                                allData?.content && allData.content.short_description
+                            }
+                        </p>
                     </div>
-                    
+
                     <div className="flex justify-start mb-6 md:mt-4 ">
-                        <button className='prod_btn flex items-center gap-[5px] p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold px-2 group '><svg className=' w-[18px] h-[18px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill='#fff'/></svg> Get Quote</button>
+                        <button className='prod_btn flex items-center gap-[5px] p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold px-2 group '><svg className=' w-[18px] h-[18px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill='#fff' /></svg> Get Quote</button>
                         {
-                            allData.data_sheet?<><Link target='_blank' href={allData.data_sheet} className='prod_btn inline-block p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold flex gap-[5px] items-center md:max-w-[150px]'><span><svg className="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 448c0 35.3 28.7 64 64 64l160 0 0-128c0-17.7 14.3-32 32-32l128 0 0-288c0-35.3-28.7-64-64-64L64 0C28.7 0 0 28.7 0 64L0 448zM171.3 75.3l-96 96c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l96-96c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6zm96 32l-160 160c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6zM384 384l-128 0 0 128L384 384z" fill="#fff"/></svg></span>Data Sheet</Link></>:<><Link href={`https://shop.adkinstruments.in/product/${allData.name}`} className='prod_btn inline-block p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold flex gap-[5px] items-center md:max-w-[150px]'>
-                                <svg className=' w-[18px] h-[18px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill='#fff'/></svg>
+                            allData.data_sheet ? <><Link target='_blank' href={allData.data_sheet} className='prod_btn inline-block p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold flex gap-[5px] items-center md:max-w-[150px]'><span><svg className="w-[18px] h-[18px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M0 448c0 35.3 28.7 64 64 64l160 0 0-128c0-17.7 14.3-32 32-32l128 0 0-288c0-35.3-28.7-64-64-64L64 0C28.7 0 0 28.7 0 64L0 448zM171.3 75.3l-96 96c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l96-96c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6zm96 32l-160 160c-6.2 6.2-16.4 6.2-22.6 0s-6.2-16.4 0-22.6l160-160c6.2-6.2 16.4-6.2 22.6 0s6.2 16.4 0 22.6zM384 384l-128 0 0 128L384 384z" fill="#fff" /></svg></span>Data Sheet</Link></> : <><Link href={`https://shop.adkinstruments.in/product/${allData.slug}`} className='prod_btn inline-block p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold flex gap-[5px] items-center md:max-w-[150px]'>
+                                <svg className=' w-[18px] h-[18px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill='#fff' /></svg>
                                 Buy Now</Link></>
                         }
-                        
+                        {
+                            allData.show_price == 1 &&
+                            <Link href={`https://shop.adkinstruments.in/product/${allData.slug}`} className='prod_btn inline-block p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold flex gap-[5px] items-center md:max-w-[150px]'>
+                                <svg className=' w-[18px] h-[18px]' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill='#fff' /></svg>
+                                Buy Now</Link>
+                        }
                     </div>
-                 
+
+                    {allData.show_price == 1 &&
+                        <div className="border-t border-[#DFDFDF] pt-3 pb-3">
+                            <div className="relative text-[#248130] cust_pulse">
+                                In stock
+                            </div>
+                        </div>
+                    }
 
                     <div className="border-t border-[#DFDFDF] pt-5">
                         <p className='block w-full font-bold'>Delivery Details</p>
@@ -117,17 +142,23 @@ loading='lazy' src={allData.media&&allData.media[promedia]} alt="product image" 
             </div>
 
 
-            <div className="main_accordian mt-3 md:mt-5">
+            <div className="main_accordian mt-3 md:mt-5 prod_destails">
                 <div className="tab_btn border-b border-[bg-primary] relative">
-                
+
                     {
-                        allData?.content && allData.content.description &&
+                        allData?.content && allData.content.description.length &&
                         <button data-attr="1" onClick={() => clickTab(1)} className={activetab == 1 ? 'text-[18px] font-bold border-b-2 border-solid border-secondary text-[bg-primary] p-3' : 'text-[18px] font-bold text-black p-3'}>Details</button>
                     }
                     {
                         allData?.content && allData.content.specification &&
-                    <button data-attr="2" onClick={() => clickTab(2)} className={activetab == 2 ? 'text-[18px] font-bold border-b-2 border-solid border-secondary text-[bg-primary] ml-[20px] p-3' : 'text-[18px] ml-[20px] font-bold text-[#767676] p-3'}>Specification</button>
-}
+                        <button data-attr="2" onClick={() => clickTab(2)} className={activetab == 2 ? 'text-[18px] font-bold border-b-2 border-solid border-secondary text-[bg-primary] ml-[20px] p-3' : 'text-[18px] ml-[20px] font-bold text-[#767676] p-3'}>Specification</button>
+                    }
+                    
+                    {
+                        allData.manual && allData.manual.length >= 0 ? (<button data-attr="3" onClick={() => clickTab(3)} className={activetab == 3 ? 'text-[18px] font-bold border-b-2 border-solid border-secondary text-[bg-primary] ml-[20px] p-3' : 'text-[18px] ml-[20px] font-bold text-[#767676] p-3'}>
+                        Manual
+                        </button>): '' }
+                    
                 </div>
                 <div className={activetab == 1 ? 'block' : 'hidden'} data-attr="1">
                     <div className="prod-with-detail prod-detila flex md:flex-nowrap flex-wrap justify-center gap-8 mt-4 px-2">
@@ -140,10 +171,19 @@ loading='lazy' src={allData.media&&allData.media[promedia]} alt="product image" 
                     </div>
 
                 </div>
+                <div className={activetab == 3 ? 'block' : 'hidden'} data-attr="3">
+                    <div className="prod-with-detail prod-detila flex md:flex-nowrap flex-wrap justify-between gap-8 mt-4 px-2">
+                     {
+                     allData.manual &&       
+                    <Link target='_blank' href={allData.manual} className='prod_btn inline-block p-2 border bg-primary text-white mr-4 border-2 border-primary rounded-md hover:bg-white hover:text-primary font-bold flex gap-[5px] items-center md:max-w-[max-content]'><span></span>Download Manual</Link>
+                     }
+                    </div>
+
+                </div>
             </div>
 
             {
-                allData.related_products ? <><Relatedproduct data={allData}/></>: ''
+                allData.related_products ? <><Relatedproduct data={allData} /></> : ''
             }
 
         </div>

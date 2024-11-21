@@ -64,7 +64,7 @@ const downloadBrouchers = (url) => {
                     <ul className="border-gray-500 border color-grey-100 p-2 max-w-[80%] rounded-sm">
 {collections.map((brouchers:any)=>{
     return(
-            <li key={brouchers.id+1} className="mb-2 border-b last:border-b-0 border-gray-500 hover:color-black color-grey-100 pb-1">
+            <li key={brouchers.id+1} className="mb-2 border-b last:border-b-0 last:mb-0 last:pb-0 border-gray-500 hover:color-black color-grey-100 pb-1">
                 
                 <button className="flex items-center gap-3" type="button" onClick={()=>downloadBrouchers(brouchers.brochure_url)}>
                     
@@ -96,7 +96,7 @@ const downloadBrouchers = (url) => {
                         <div className="info absolute bottom-[30px] px-12 w-full text-center">   
                         {/* <p className="text-white py-3 px-4 text-[16px] font-bold rounded-md mx-auto inline-block md:mb-4 mb-2">{data.name}</p>                        */}
                      
-                             <Link href={data.children && data.children.length >= 1 ? `/categories/${data.slug_url}`: `/categories/` } className="bg-white py-3 px-4 text-[16px] font-bold  rounded-md mx-auto inline-block">{data.name}</Link> 
+                             <Link href={data.children && data.children.length >= 1 ? `/categories/${data.slug_url}`: `/categories/` } className="bg-white py-3 px-4 md:text-[16px] text-[14px] font-bold  rounded-md mx-auto inline-block border-2 border-[#251048]">{data.name}</Link> 
 
 
                         </div>
